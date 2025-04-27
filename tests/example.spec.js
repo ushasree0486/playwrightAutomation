@@ -2,6 +2,9 @@
 import { test, expect } from '@playwright/test';
 
 test('has title', async ({ page }) => {
+  const browserContext = page.context();
+  await browserContext.tracing.start({ snapshots: true, screenshots: true });
+ // await browsercontext.tracing.start({snapshots : true,screenshots : true})
   await page.goto('https://playwright.dev/');
 
   // Expect a title "to contain" a substring.
